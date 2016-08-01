@@ -1,0 +1,43 @@
+<br><br>
+<div class="col-sm-2 col-sm-offset-10 col-md-6 col-md-offset-3">
+	<div class="create_test">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-6 col-md-offset-2">
+					<h1>Edit Testimony</h1>
+						<%= form_for(@story, :remote => true, class: 'form-horizontal', :html => { :id => "form_correct" }) do |f| %>
+							<fieldset>
+								<div class = "form-group">
+									<%= f.label :name %>
+									<%= f.text_field :name, class: "form-control"  %>
+								</div>
+							
+								<div class = "form-group">
+									<%= f.label :title %>
+									<%= f.text_field :title, class: "form-control"  %>
+								</div>
+							
+								<div class = "form-group">
+									<%= f.label :content %>
+									<%= f.text_area :content, size: "30x10", class: "form-control"  %>
+								</div>
+								<% if user_signed_in? and current_user.level == "Admin" %>
+									<div class = "form-group">
+										<%= f.label :status %>
+										<%= f.select :status, ['Awaiting Approval', 'Approved'], class: "form-control"%>
+									</div>
+								<% end %>
+
+								<div class = "form-group">
+									<%= f.submit(class: "btn btn-primary btn-sm", :id => "action") %>
+								</div>
+							</fieldset>
+						<% end %> 
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+

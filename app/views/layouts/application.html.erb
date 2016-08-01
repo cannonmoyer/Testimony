@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Testimony</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+	<div class="container-fluid">
+	  
+	  <div class="row"><br><br><br><br>
+	    <div class="col-sm-2 col-sm-offset-10 col-md-3 col-md-offset-7">
+	    	<nav class="navbar navbar-transparent">
+	    		<div class="nav_links">
+					<ul class="nav navbar-nav"> 
+					        <li><%= link_to "Home", home_path() %></li>
+					        <li><%= link_to "Testimonies", stories_path() %></li>
+					        <li><%= link_to "Create Your Testimony", new_story_path() %></li>
+					        <% if user_signed_in? and current_user.level == "Admin" %>
+					        	<li><%= link_to "Need Approval", view_awaiting_approval_path() %></li>	
+					        <% end %>
+					        <% if user_signed_in? %>
+					        	<li><%= link_to "Log Out", destroy_user_session_path(), method: :delete %></li>
+					        <% else %>
+					        	 <li><%= link_to "Log In", new_user_session_path() %></li>
+					        <% end %> 
+					</ul>
+					
+				</div>
+	    	</nav>
+	    </div>
+	  </div>
+	</div>
+
+<%= render "layouts/flash_messages.html.erb" %>
+<%= yield %>
+</body>
+</html>
+

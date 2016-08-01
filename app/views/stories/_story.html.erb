@@ -1,0 +1,10 @@
+<tr>
+	<td><%= story.name %></td>
+	<td><%= story.title %></td>
+	<td><%= link_to "", view_story_path(story), class: "glyphicon glyphicon-eye-open" %></td>
+	<% if user_signed_in? and (story.user == current_user or current_user.level == "Admin") %>
+		<td><%= link_to "", edit_story_path(story), class: "glyphicon glyphicon-pencil" %></td>
+		<td><%= link_to "", story_path(story), data:{confirm: 'Are you sure?'},  class: "glyphicon glyphicon-trash", method: :delete %></td>
+	<% end %>
+
+</tr>

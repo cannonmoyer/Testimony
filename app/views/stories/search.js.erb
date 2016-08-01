@@ -1,0 +1,2 @@
+$("#stories-table > tbody").html("");
+$("<%= escape_javascript(render partial: 'stories/story', collection: @stories) %>").appendTo("#stories-table");
